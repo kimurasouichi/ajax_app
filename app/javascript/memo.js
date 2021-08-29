@@ -9,16 +9,16 @@ const buildHTML = (XHR) => {
         ${item.content}
       </div>
     </div>`;
-  return html
-}
+  return html;
+};
 
-function post (){    //リクエストを送信する処理
+function post (){
   const submit = document.getElementById("submit");
   submit.addEventListener("click", (e) => {
-    e.preventDefault();
+    e.preventDefault();/*繰り返さない */
     const form = document.getElementById("form");
-    const formData = new FormData(form);  //フォームに入力された値を取得できるオブジェクト
-    const XHR = new XMLHttpRequest(); //非同期通信を行うためにXMLHttpRequestオブジェクトを生成します。
+    const formData = new FormData(form);/*フォームに入力された値を取得できる*/
+    const XHR = new XMLHttpRequest();/*サーバーサイドと非同期通信を行う*/
     XHR.open("POST", "/posts", true);
     XHR.responseType = "json";
     XHR.send(formData);
@@ -26,13 +26,13 @@ function post (){    //リクエストを送信する処理
       if (XHR.status != 200) {
         alert(`Error ${XHR.status}: ${XHR.statusText}`);
         return null;
-      }
+      };
       const list = document.getElementById("list");
-      const formText = document.getElementById("content");
-      list.insertAdjacentHTML("afterend", buildHTML(XHR));
+      const formText = document.getElementById("content")
+      list.insertAdjacentHTML("afterend", html);
       formText.value = "";
     };
   });
-}
+};
 
 window.addEventListener('load', post);
