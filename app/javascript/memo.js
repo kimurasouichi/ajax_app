@@ -12,7 +12,7 @@ const buildHTML = (XHR) => {
   return html;
 };
 
-function post (){
+function post() {
   const submit = document.getElementById("submit");
   submit.addEventListener("click", (e) => {
     e.preventDefault();/*繰り返さない */
